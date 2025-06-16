@@ -1,0 +1,109 @@
+#include<iostream>
+#include <string>
+
+using namespace std;
+
+struct Students_info  {
+
+
+    string name, roll_no, department, university, city, country, phone_no, status;
+    int marks_in_current_semester, marks_in_previous_semester;   
+
+};
+
+int main(){
+    
+
+
+    int SIZE;
+    cout<<"--------------------------------------\t"<<endl;
+    cout<<"|     Student Information System     |"<<endl;
+    cout<<"--------------------------------------\t"<<endl;
+    cout<<endl;
+    cout<<"Enter Number of students to keep record of : ";
+    cin>>SIZE;
+    cout<<endl;
+    cout<<"now enter the details of students"<<endl;
+    cout<<"--------------------------------------"<<endl;
+    cout<<endl;
+    
+    
+
+
+
+    Students_info record[SIZE][10]= {};     // Creating a 2d array of structure to store the information of students
+
+    //  rows = SIZE;
+    //  columns = 10;
+
+
+
+    // Taking input of students information
+    for(int i = 0; i < SIZE; i++){
+        for (int j = 0; j < 1; j++){
+            cout<<"Enter the name of student: ";
+            cin.ignore();                                                  // To clear the input buffer
+            getline(cin, record[i][j].name);
+            cout<<"Enter the roll number of student: ";
+            cin>>record[i][j].roll_no;      
+            cout<<"Enter the department of student: ";
+            cin>>record[i][j].department;
+            cout<<"Enter the university of student: "; 
+            cin.ignore();                                                  // To clear the input buffer                                    
+            getline(cin, record[i][j].university);  
+            cout<<"Enter the city of student: ";
+            cin>>record[i][j].city;
+            cout<<"Enter the country of student: ";
+            cin>>record[i][j].country;  
+            cout<<"Enter the phone number of student: ";
+            cin>>record[i][j].phone_no;
+            cout<<"Enter the marks in current semester of student: ";
+            cin>>record[i][j].marks_in_current_semester;
+            cout<<"Enter the marks in previous semester of student: ";
+            cin>>record[i][j].marks_in_previous_semester;
+            if (record[i][j].marks_in_current_semester >=50 && record[i][j].marks_in_previous_semester >=50){
+                record[i][j].status = "Pass";
+            }
+            else if (record[i][j].marks_in_current_semester <50 && record[i][j].marks_in_previous_semester <50){
+                record[i][j].status = "Fail";
+            }
+            else{
+                record[i][j].status = "Supplementary";
+            }
+        
+        }
+        cout<<"--------------------------------------"<<endl;
+    }
+    
+// Displaying the information of students
+
+    cout<<"--------------------------------------"<<endl;
+    cout<<"|    Registered Students Information    |"<<endl;
+    cout<<"--------------------------------------"<<endl;  
+    cout<<endl; 
+    cout<<endl;
+    
+
+    cout<<"------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
+    cout<<"Name\t\tRoll Number\t\tDepartment\t\tUniversity\t\tCity\tCountry\t\tPhone Number\t\tMarks in Current Semester\t\tMarks in Previous Semester\t\tStatus"<<endl;
+    cout<<"------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
+    cout<<endl;
+    for (int i = 0; i < SIZE; i++){
+        for(int j= 0; j<1; j++){
+            cout<<record[i][j].name<<"\t\t";
+            cout<<record[i][j].roll_no<<"\t\t";      
+            cout<<record[i][j].department<<"\t\t";
+            cout<<record[i][j].university<<"\t\t";
+            cout<<record[i][j].city<<"\t\t";
+            cout<<record[i][j].country<<"\t\t";
+            cout<<record[i][j].phone_no<<"\t\t";
+            cout<<record[i][j].marks_in_current_semester<<"\t\t";
+            cout<<record[i][j].marks_in_previous_semester<<"\t\t";
+            cout<<record[i][j].status<<"\t\t";
+        }
+        cout<<endl;
+        cout<<"--------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;   
+    }
+
+    return 0;
+}
